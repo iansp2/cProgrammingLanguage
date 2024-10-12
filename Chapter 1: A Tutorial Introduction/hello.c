@@ -33,20 +33,20 @@ void fToC() {
 }
 
 void cToF() {
-    float farh, c;
-    const int low = -20;
-    const int high = 160;
-    const int step = 20;
-    
-    c = low;
+    /* I'm using #define below because it's in the book, but my understanding
+    is that it is outdated and the const int above is safer (type and scope) */
+    #define LOWER -20 /* Lower limit of the table */    
+    #define UPPER 300 /* Upper limit of the table */
+    #define STEP 20 /* Step size */
 
+    float farh, c;
+    
     printf("Celsius to Fahrenheit\n\n");
     printf("  C     F\n");
     
-    while (c <= high) {
+    for (c=UPPER; c>=LOWER; c=c-STEP) {
         farh = 32 + (9.0 / 5.0) * c;
         printf("%3.0f %6.0f \n", c, farh);
-        c = c + step;
     }
 }
 
